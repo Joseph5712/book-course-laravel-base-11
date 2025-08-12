@@ -35,7 +35,7 @@ class CategoryController extends Controller
     public function store(StoreRequest $request)
     {
         Category::create($request->validated());
-        return to_route('category.index');
+        return to_route('category.index')->with('status', 'Category create');
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     {
 
         $category->update($request->validated());
-        return to_route('category.index');
+        return to_route('category.index')->with('status', 'Category updated');
     }
 
     /**
@@ -71,6 +71,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return to_route('category.index');
+        return to_route('category.index')->with('status', 'Category delete');
     }
 }
